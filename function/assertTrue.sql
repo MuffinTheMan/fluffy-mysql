@@ -1,0 +1,9 @@
+DROP FUNCTION IF EXISTS assertTrue;
+DELIMITER $$
+CREATE FUNCTION assertTrue(testCondition BOOL, message TEXT) RETURNS TEXT
+	NO SQL DETERMINISTIC
+BEGIN
+	RETURN CONCAT(IF(testCondition, 'PASS', 'FAIL'), ' - ', message);
+END
+$$
+DELIMITER ;
